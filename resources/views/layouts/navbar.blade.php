@@ -3,7 +3,7 @@
     <!-- MENU -->
     <ul class="flex items-center gap-x-8">
         <li class="menu-item">
-            <a href="http://127.0.0.1:8000" class="menu-item_link">
+            <a href="{{route('index')}}" class="menu-item_link">
                 صفحه اصلی
             </a>
         </li>

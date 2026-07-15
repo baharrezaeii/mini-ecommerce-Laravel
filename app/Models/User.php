@@ -6,13 +6,14 @@
 
 namespace App\Models;
 
+use App\Enums\UserStatus;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticate;
 
 /**
  * Class User
- * 
+ *
  * @property int $id
  * @property string $first_name
  * @property string $last_name
@@ -22,18 +23,18 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $status
  * @property Carbon $created_at
  * @property Carbon $updated_at
- * 
+ *
  * @property Collection|Order[] $orders
  *
  * @package App\Models
  */
-class User extends Model
+class User extends Authenticate
 {
 	protected $table = 'users';
 	public static $snakeAttributes = false;
 
 	protected $casts = [
-		'status' => 'int'
+		'status' => UserStatus::class
 	];
 
 	protected $hidden = [

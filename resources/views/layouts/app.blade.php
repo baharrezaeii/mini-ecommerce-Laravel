@@ -31,12 +31,11 @@
 
 @include('layouts.icons')
 
-@include('layouts.header')
+@includeUnless(isset($withoutHeader),'layouts.header')
 
 @yield('content')
 
-@include('layouts.footer')
-
+@includeUnless(isset($withoutFooter),'layouts.footer')
 <!-- Overlay -->
 <div class="overlay"></div>
 <div class="search-overlay"></div>
