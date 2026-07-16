@@ -38,16 +38,16 @@
                 <div class="flex gap-x-10 child:space-y-2 child:text-gray-400">
                     <ul class="child-hover:text-blue-500 child:transition-all">
                         <li>
-                            <a href="http://127.0.0.1:8000">صفحه اصلی</a>
+                            <a href="{{route('index')}}">صفحه اصلی</a>
                         </li>
                         <li>
                             <a href="http://127.0.0.1:8000/products">فروشگاه</a>
                         </li>
                         <li>
-                            <a href="http://127.0.0.1:8000/auth/login">ورود به حساب کاربری</a>
+                            <a href="{{route('auth.login.index')}}">ورود به حساب کاربری</a>
                         </li>
                         <li>
-                            <a href="http://127.0.0.1:8000/auth/register">ثبت نام</a>
+                            <a href="{{route('auth.register.index')}}">ثبت نام</a>
                         </li>
                     </ul>
                 </div>
@@ -75,10 +75,10 @@
 
                 <div class="flex justify-center md:justify-end items-center gap-x-3  child:bg-gray-950 child:dark:bg-gray-900">
                         <span class="w-16 h-16 lg:w-20 lg:h-20 flex-center rounded-xl ">
-                            <img class="w-16 h-16" src="./assets/images/footer/1.png" alt="">
+                            <img class="w-16 h-16" src="{{asset('assets/images/footer/1.png')}}" alt="">
                         </span>
                     <span class="w-16 h-16 lg:w-20 lg:h-20 flex-center rounded-xl ">
-                            <img class="w-16 h-16" src="./assets/images/footer/2.png" alt="">
+                            <img class="w-16 h-16" src="{{asset('assets/images/footer/2.png')}}" alt="">
                         </span>
                 </div>
                 <!-- GO TOP -->

@@ -14,14 +14,22 @@
                              class="size-10 ring-2 ring-gray-400/20 rounded-full"
                              alt="AVATAR">
                         <span class="felx flex-col gap-y-2">
-                            <p class="font-DanaMedium text-lg">{{}}</p>
-                            <p class="text-gray-400">{{auth()->user()->mobile}}</p>
+                            <p class="font-DanaMedium text-lg">{{getUserFullName()}}</p>
+                            <p class="text-gray-400">{{ auth()->user()->mobile }}</p>
                         </span>
                     </div>
                 </div>
                 <ul
                     class="w-full relative space-y-2 child:duration-300 child:transition-all child:py-3  child:px-2 child:flex child:gap-x-2 text-lg child:cursor-pointer child:rounded-lg">
-                    <li class="{{}}">
+                    <li class="{{activeAccountSidebar('account.orders')}}">
+                    <svg class="w-6 h-6 ">
+                        <use href="#shopping-bag"></use>
+                    </svg>
+                    <a href="{{route('account.orders')}}">
+                        سفارش ها
+                    </a>
+                    </li>
+                    <li class="{{activeAccountSidebar('account.edit-profile.index')}}">
                         <svg class="w-6 h-6 ">
                             <use href="#cog"></use>
                         </svg>
@@ -37,8 +45,8 @@
                     </li>
                 </ul>
             </div>
-    <div class="lg:w-3/4">
-        @yield('account-content')
+            <div class="lg:w-3/4">
+                @yield('account-content')
     </div>
         </div>
     </main>
