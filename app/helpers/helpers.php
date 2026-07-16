@@ -19,3 +19,11 @@ if (!function_exists('activeAccountSidebar')) {
         return 'hover:text-blue-500';
     }
 }
+
+if (!function_exists('calcPercent')) {
+    function calcPercent(int|float $total, int|float $amount): int
+    {
+        return $amount * 100 / $total;
+    }
+}
+

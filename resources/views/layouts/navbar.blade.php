@@ -9,7 +9,7 @@
         </li>
 
         <li class="menu-item">
-            <a href="http://127.0.0.1:8000/products" class="menu-item_link">
+            <a href="{{route('products.index')}}" class="menu-item_link">
                 فروشگاه
             </a>
         </li>
