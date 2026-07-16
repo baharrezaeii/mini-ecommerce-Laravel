@@ -46,7 +46,6 @@ class RegisterPostRequest extends FormRequest
             ],
             'mobile' => [
                 'required',
-                'digits:11',
                 'ir_mobile:zero',
                 'unique:App\Models\User'
 

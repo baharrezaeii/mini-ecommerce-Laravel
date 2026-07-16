@@ -31,7 +31,6 @@ class LoginPostRequest extends FormRequest
             ],
             'mobile' => [
                 'required',
-                'digits:11',
                 'ir_mobile:zero'
             ],
         ];

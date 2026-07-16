@@ -60,7 +60,7 @@
                                 </svg>
                                 اطلاعات کاربری
                             </a>
-                            <a href="#"
+                            <a href="{{route('auth.logout.index')}}"
                                class="flex items-center gap-x-2  hover:bg-red-500 dark:hover:bg-red-500 hover:text-gray-100">
                                 <svg class="h-5 w-5">
                                     <use href="#arrow-left-end"></use>

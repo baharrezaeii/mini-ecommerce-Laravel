@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Order
- * 
+ *
  * @property int $id
  * @property int $user_id
  * @property int $final_price
@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property string|null $deleted_at
- * 
+ *
  * @property User $user
  * @property Collection|OrderItem[] $orderItems
  *
@@ -40,7 +40,7 @@ class Order extends Model
 		'final_price' => 'int',
 		'final_discount' => 'int',
 		'total_products' => 'int',
-		'status' => 'int'
+        'status' => 'int'
 	];
 
 	protected $fillable = [
@@ -48,6 +48,7 @@ class Order extends Model
 		'final_price',
 		'final_discount',
 		'total_products',
+		'tracking_code',
 		'status'
 	];
 

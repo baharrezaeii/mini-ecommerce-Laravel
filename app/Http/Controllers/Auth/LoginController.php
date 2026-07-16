@@ -25,13 +25,12 @@ class LoginController
             ->whereMobile($request->input('mobile'))
             ->first();
 
-
         if(!$user){
             return back()->withErrors([
                 'general'=>'اطلاعات کاربر اشتباه است.'
             ]);
         }
-        if(!Hash::check($request->input('password'),$user->paasword)){
+        if(!Hash::check($request->input('password'),$user->password)){
             return back()->withErrors([
                 'general'=>'اطلاعات کاربر اشتباه است.'
             ]);
