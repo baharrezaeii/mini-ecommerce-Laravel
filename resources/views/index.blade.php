@@ -6,16 +6,16 @@
         <div dir="rtl" class="swiper header-slider h-52 md:h-96 cursor-pointer">
             <div class="swiper-wrapper">
                 <a href="shop.html" class="swiper-slide">
-                    <img src="./assets/images/slider/4.webp" class="rounded-xl" alt="">
+                    <img src="{{asset('assets/images/slider/4.webp')}}" class="rounded-xl" alt="">
                 </a >
                 <a href="shop.html" class="swiper-slide">
-                    <img src="./assets/images/slider/1.jpg" class="rounded-xl" alt="">
+                    <img src="{{asset('assets/images/slider/1.jpg')}}" class="rounded-xl" alt="">
                 </a >
                 <a href="shop.html" class="swiper-slide">
-                    <img src="./assets/images/slider/2.jpg" class="rounded-xl" alt="">
+                    <img src="{{asset('assets/images/slider/2.jpg')}}" class="rounded-xl" alt="">
                 </a >
                 <a href="shop.html" class="swiper-slide">
-                    <img src="./assets/images/slider/3.gif" class="rounded-xl" alt="">
+                    <img src="{{asset('assets/images/slider/3.gif')}}" class="rounded-xl" alt="">
                 </a >
             </div>
             <div class="swiper-pagination-wrapper">
@@ -170,11 +170,11 @@
                         <a href="http://127.0.0.1:8000/products/1">
                             <img
                                 class="product-card_img group-hover:opacity-0 absolute"
-                                src="{{asset('assets/images/products/1.png')}}"
+                                src="http://127.0.0.1:8000/assets/images/products/1.png"
                                 alt=""
                             >
                             <img class="product-card_img opacity-0 group-hover:opacity-100"
-                                 src="{{asset('assets/images/products/1.png')}}"
+                                 src="http://127.0.0.1:8000/assets/images/products/1.png"
                                  alt="">
                         </a>
                         <!--  product footer -->
@@ -226,7 +226,7 @@
             </span>
                         </div>
                         <!-- product img -->
-                        <a href="http://127.0.0.1:8000/products/2">
+                        <a href="http://127.0.0.1:8000/products/1">
                             <img
                                 class="product-card_img group-hover:opacity-0 absolute"
                                 src="http://127.0.0.1:8000/assets/images/products/1.png"
@@ -393,7 +393,7 @@
             </span>
                         </div>
                         <!-- product img -->
-                        <a href="http://127.0.0.1:8000/products/2">
+                        <a href="http://127.0.0.1:8000/products/1">
                             <img
                                 class="product-card_img group-hover:opacity-0 absolute"
                                 src="http://127.0.0.1:8000/assets/images/products/1.png"

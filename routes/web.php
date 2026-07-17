@@ -26,4 +26,5 @@ Route::prefix('account')->name('account.')->middleware('auth')->group(function (
             Route::post('/', 'post')->name('post');
 
         });
+
 });

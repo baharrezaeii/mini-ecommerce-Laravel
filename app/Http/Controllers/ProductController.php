@@ -12,8 +12,12 @@ class ProductController
     public function index()
     {
         $products = Product::query()
+            ->applySort()
+            ->applyFilter()
+            ->applySearch()
             ->where('status', '=', ProductStatus::DRAFT)
-            ->paginate();
+            ->paginate()
+            ->withQueryString();
 
         $productCategories = ProductCategory::all();
 
@@ -24,12 +28,23 @@ class ProductController
     public function show(Product $product)
     {
         $product->load('productCategory');
-        $relatedProducts=Product::query()
-            ->where('product_category_id','=',$product->product_category_id)
-            ->where('id','!=',$product->id)
+        $relatedProducts = Product::query()
+            ->where('product_category_id', '=', $product->product_category_id)
+            ->where('id', '!=', $product->id)
             ->limit(6)
             ->get();
-        return view('products.show',compact('product','relatedProducts'));
+        return view('products.show', compact('product', 'relatedProducts'));
+
+    }
+
+    public function removeFilters(Request $request)
+    {
+        $inputs = $request->all();
+
+        unset($inputs['exists']);
+        unset($inputs['category_id']);
+
+        return redirect()->route('products.index', $inputs);
 
     }
 }
