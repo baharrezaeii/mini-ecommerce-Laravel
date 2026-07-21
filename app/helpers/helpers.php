@@ -57,4 +57,11 @@ if (!function_exists('activeSort')) {
     }
 }
 
+if (!function_exists('getUserCartCount')) {
+    function getUserCartCount():int
+    {
+       return \App\Services\CartService::getCount();
+    }
+}
+
 

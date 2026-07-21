@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Account\AccountOrderController;
 use App\Http\Controllers\Account\EditProfileController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -28,3 +30,25 @@ Route::prefix('account')->name('account.')->middleware('auth')->group(function (
         });
 
 });
+
+Route::prefix('cart')->name('cart.')->middleware('auth')->controller(CartController::class)->group(function () {
+
+    Route::get('/', 'index')->name('index');
+    Route::get('add', 'add')->name('add');
+
+    Route::get('{productId}/remove', 'removeItem')->name('remove-item');
+    Route::get('clear', 'clear')->name('clear');
+
+    Route::get('update-qty', 'updateQty')->name('update-qty');
+
+});
+
+Route::prefix('checkout')->name('checkout.')->middleware('auth')->controller(CheckoutController::class)->group(function () {
+
+    Route::get('/', 'index')->name('index');
+    Route::get('/', 'post')->name('post');
+
+});
+
+
+

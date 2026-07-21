@@ -3,7 +3,7 @@
     <!-- product header -->
     <div class="product-card_header">
         <div class="flex items-center gap-x-2">
-            <form action="http://127.0.0.1:8000/cart/add"
+            <form action="{{route('cart.add')}}"
                   method="POST">
                 @csrf
                 <input type="hidden" name="product_id" value="{{$product->id}}"/>
@@ -57,7 +57,7 @@
         <div class="product-card_price-wrapper">
             <!-- Price -->
          @if($product->discount)
-                <div class="product-card_price-wrapper">
+                <div class="product-card_price">
                     <del>{{number_format($product->price)}} <h6>تومان</h6></del>
                     <p>{{number_format($product->price - $product->discount)}}</p>
                     <span>تومان</span>

@@ -6,6 +6,7 @@
 
 namespace App\Models;
 
+use App\Enums\OrderStatus;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -40,7 +41,7 @@ class Order extends Model
 		'final_price' => 'int',
 		'final_discount' => 'int',
 		'total_products' => 'int',
-        'status' => 'int'
+        'status' => OrderStatus::class
 	];
 
 	protected $fillable = [
