@@ -60,7 +60,7 @@ searchButton?.addEventListener('click', () => {
   searchOverlay.classList.add('active');
 });
 
-// Event Listener for Overlay Click 
+// Event Listener for Overlay Click
 overlay?.addEventListener('click', () => {
   overlay.classList.remove('active');
   searchModal.classList.remove('active');
@@ -111,29 +111,36 @@ closeMenuButton?.addEventListener('click', () => {
 })
 
 
-// Custom Input Fields with Increment/Decrement Buttons
 document.addEventListener('DOMContentLoaded', () => {
-  // Event Listener for Increment Buttons
-  document.querySelectorAll('.increment').forEach(button => {
-    button.addEventListener('click', event => {
-      const input = event.target.closest('button').querySelector('.custom-input');
-      const value = parseInt(input.value) || 0;
-      if (value < 20) {
-        input.value = value + 1;
-      }
-    });
-  });
 
-  // Event Listener for Decrement Buttons
-  document.querySelectorAll('.decrement').forEach(button => {
-    button.addEventListener('click', event => {
-      const input = event.target.closest('button').querySelector('.custom-input');
-      const value = parseInt(input.value) || 0;
-      if (value > 0) {
-        input.value = value - 1;
-      }
+    document.querySelectorAll('.increment').forEach(button => {
+        button.addEventListener('click', function () {
+
+            const input = this.closest('button').querySelector('.custom-input');
+
+            let value = parseInt(input.value) || 0;
+
+            if (value < 20) {
+                input.value = value + 1;
+                input.dispatchEvent(new Event('input'));
+            }
+        });
     });
-  });
+
+    document.querySelectorAll('.decrement').forEach(button => {
+        button.addEventListener('click', function () {
+
+            const input = this.closest('button').querySelector('.custom-input');
+
+            let value = parseInt(input.value) || 0;
+
+            if (value > 1) {
+                input.value = value - 1;
+                input.dispatchEvent(new Event('input'));
+            }
+        });
+    });
+
 });
 
 
@@ -235,7 +242,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// formvalidatiom 
+// formvalidatiom
 document.addEventListener("DOMContentLoaded", function () {
   const inputField = document.querySelector("input[type='text']");
   const errorMessage = document.querySelector("p.text-error");
@@ -384,7 +391,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// PASSWORD INPUT 
+// PASSWORD INPUT
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll("[data-toggle='password']").forEach(function (wrapper) {
     const passwordInput = wrapper.querySelector("input");
@@ -526,7 +533,7 @@ function toggleAccordion(index) {
     icon.classList.remove('-rotate-90');
   } else {
     content.style.maxHeight = content.scrollHeight + 'px';
-    icon.classList.add('-rotate-90'); 
+    icon.classList.add('-rotate-90');
   }
 }
 

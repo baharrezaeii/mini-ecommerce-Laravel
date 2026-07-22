@@ -44,14 +44,20 @@ class Order extends Model
         'status' => OrderStatus::class
 	];
 
-	protected $fillable = [
-		'user_id',
-		'final_price',
-		'final_discount',
-		'total_products',
-		'tracking_code',
-		'status'
-	];
+    protected $fillable = [
+        'user_id',
+        'total_price',
+        'total_discount',
+        'total_products',
+        'tracking_code',
+        'status',
+        'user_province',
+        'user_city',
+        'user_address',
+        'user_postal_code',
+        'user_mobile',
+        'description',
+    ];
 
 	public function user()
 	{

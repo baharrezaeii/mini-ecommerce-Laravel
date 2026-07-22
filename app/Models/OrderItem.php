@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class OrderItem
- * 
+ *
  * @property int $id
  * @property int $order_id
  * @property int $product_id
@@ -24,7 +24,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property string|null $deleted_at
- * 
+ *
  * @property Product $product
  * @property Order $order
  *
@@ -47,14 +47,15 @@ class OrderItem extends Model
 	];
 
 	protected $fillable = [
-		'order_id',
-		'product_id',
-		'qty',
-		'unit_price',
-		'total_price',
-		'unit_discount',
-		'total_discount'
-	];
+        'order_id',
+        'product_id',
+        'qty',
+        'unit_price',
+        'total_price',
+        'unit_discount',
+        'total_discount',
+        'price'
+    ];
 
 	public function product()
 	{
