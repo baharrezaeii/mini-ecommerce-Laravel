@@ -3,8 +3,9 @@
 namespace App\Services;
 
 use App\Enums\OrderStatus;
-use App\Models\Order;
-use App\Models\OrderItem;
+use App\Exceptions\CartItemNotFoundException;
+use App\Http\Models\Order;
+use App\Http\Models\OrderItem;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Str;
@@ -15,6 +16,10 @@ class OrderService
     {
         $cartItems = CartService::getItemsWithDetails();
         $cartTotalPrices = CartService::getTotalPrices();
+        if (count($cartItems) == 0) {
+            throw new CartItemNotFoundException('موردی در سبد خرید شما یافت نشد.');
+        }
+
 
         //check product qty
         foreach ($cartItems as $cartItem) {
@@ -45,8 +50,8 @@ class OrderService
                 'order_id' => $order->id,
                 'product_id' => $cartItem['product']->id,
                 'qty' => $cartItem['qty'],
-                'unit_price'=>$cartItem['product']->price,
-                'total_price'=>$cartItem['product']->price * $cartItem['qty'],
+                'unit_price' => $cartItem['product']->price,
+                'total_price' => $cartItem['product']->price * $cartItem['qty'],
                 'unit_discount' => $cartItem['product']->discount,
                 'total_discount' => $cartItem['product']->discount * $cartItem['qty'],
             ]);

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Enums\ProductStatus;
-use App\Models\Product;
-use App\Models\ProductCategory;
+use App\Http\Models\Product;
+use App\Http\Models\ProductCategory;
 use Illuminate\Http\Request;
 
 class ProductController

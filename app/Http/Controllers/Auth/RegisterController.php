@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Enums\UserStatus;
+use App\Http\Models\User;
 use App\Http\Requests\Auth\RegisterPostRequest;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
+
 
 class RegisterController
 {

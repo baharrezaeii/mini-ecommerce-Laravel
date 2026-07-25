@@ -40,6 +40,9 @@
             </ol>
         </nav>
 
+        @error('general')
+        <span style="color: red"> {{$message}}</span>
+        @enderror
 
         <form
             action="{{route('checkout.post')}}"
@@ -165,78 +168,78 @@
                         </div>
                     </div>
 
-                        <h1 class="font-DanaDemiBold text-lg">محصولات سفارش</h1>
-                        <div class="mt-8">
-                            @foreach($userCart as $item)
-                                <div class="flex mt-8 gap-x-4 col-span-4">
-                                    <img src="{{asset('assets/images/products/8.webp')}}" class="w-36 h-20"
-                                         alt="">
-                                    <ul class="flex flex-col items-start gap-y-2 font-DanaMedium text-gray-600 dark:text-gray-200 mr-3">
-                                        <li>
-                                            <p>
-                                                {{$item['product']->name}}
-                                                |
-                                                {{$item['product']->en_name}}
-                                            </p>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                تعداد :
-                                                {{$item['qty']}}
-                                            </p>
-                                        </li>
-                                        <li>
-                                            <p>
-                                                مبلغ :
-                                                {{number_format(($item['product']->price - $item['product']->discount) * $item['qty'])}}
-                                            </p>
-                                        </li>
-                                    </ul>
-                                </div>
+                    <h1 class="font-DanaDemiBold text-lg">محصولات سفارش</h1>
+                    <div class="mt-8">
+                        @foreach($userCart as $item)
+                            <div class="flex mt-8 gap-x-4 col-span-4">
+                                <img src="{{asset('assets/images/products/8.webp')}}" class="w-36 h-20"
+                                     alt="">
+                                <ul class="flex flex-col items-start gap-y-2 font-DanaMedium text-gray-600 dark:text-gray-200 mr-3">
+                                    <li>
+                                        <p>
+                                            {{$item['product']->name}}
+                                            |
+                                            {{$item['product']->en_name}}
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            تعداد :
+                                            {{$item['qty']}}
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            مبلغ :
+                                            {{number_format(($item['product']->price - $item['product']->discount) * $item['qty'])}}
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
 
-                    @endforeach
-                        </div>
-                        </div>
-                    <!-- PRICE BOX -->
-                    <div
-                        class="w-full lg:w-1/4 lg:sticky top-5 flex flex-col gap-y-4 rounded-lg bg-white dark:bg-gray-800 shadow p-4">
-                        <!-- PRICE -->
-                        <ul class="child:flex child:items-center child:justify-between space-y-8">
-                            <li>
-                                <p>
-                                    قیمت کالا ها
-                                </p>
-                                <p class="flex gap-x-1 text-gray-600 dark:text-gray-300 ">
-                                    {{number_format($userCartTotalPrices['price'])}}
-                                    <span class="hidden xl:flex">تومان</span>
-                                </p>
-                            </li>
-                            <li class="text-red-500 dark:text-red-400">
-                                <p>تخفیف </p>
-                                <p class="font-DanaMedium">
-                                    {{number_format($userCartTotalPrices['discount'])}}
-                                    تومان
-                                </p>
-                            </li>
-                            <li class="border-t-2 border-dashed border-gray-400 pt-8">
-                                <p> مبلغ نهایی :</p>
-                                <p>
-                                    {{number_format($userCartTotalPrices['price'] -$userCartTotalPrices['discount'])}}
-                                    تومان
-                                </p>
-                            </li>
-                        </ul>
-
-                        <button
-                            type="submit"
-                            class="w-full mt-4 flex items-center gap-x-1 justify-center bg-blue-500 text-white hover:bg-blue-600 transition-all rounded-lg shadow py-2"
-                        >
-                            <svg class="w-5 h-5">
-                                <use href="#shopping-bag"></use>
-                            </svg>
-                            تایید و تکمیل سفارش
-                        </button>
+                        @endforeach
                     </div>
+                </div>
+                <!-- PRICE BOX -->
+                <div
+                    class="w-full lg:w-1/4 lg:sticky top-5 flex flex-col gap-y-4 rounded-lg bg-white dark:bg-gray-800 shadow p-4">
+                    <!-- PRICE -->
+                    <ul class="child:flex child:items-center child:justify-between space-y-8">
+                        <li>
+                            <p>
+                                قیمت کالا ها
+                            </p>
+                            <p class="flex gap-x-1 text-gray-600 dark:text-gray-300 ">
+                                {{number_format($userCartTotalPrices['price'])}}
+                                <span class="hidden xl:flex">تومان</span>
+                            </p>
+                        </li>
+                        <li class="text-red-500 dark:text-red-400">
+                            <p>تخفیف </p>
+                            <p class="font-DanaMedium">
+                                {{number_format($userCartTotalPrices['discount'])}}
+                                تومان
+                            </p>
+                        </li>
+                        <li class="border-t-2 border-dashed border-gray-400 pt-8">
+                            <p> مبلغ نهایی :</p>
+                            <p>
+                                {{number_format($userCartTotalPrices['price'] -$userCartTotalPrices['discount'])}}
+                                تومان
+                            </p>
+                        </li>
+                    </ul>
+
+                    <button
+                        type="submit"
+                        class="w-full mt-4 flex items-center gap-x-1 justify-center bg-blue-500 text-white hover:bg-blue-600 transition-all rounded-lg shadow py-2"
+                    >
+                        <svg class="w-5 h-5">
+                            <use href="#shopping-bag"></use>
+                        </svg>
+                        تایید و تکمیل سفارش
+                    </button>
+                </div>
 
             </section>
         </form>

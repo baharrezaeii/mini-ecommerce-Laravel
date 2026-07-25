@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Account;
 
-use App\Models\Order;
+use App\Http\Models\Order;
 use Illuminate\Support\Facades\Auth;
 
 class AccountOrderController

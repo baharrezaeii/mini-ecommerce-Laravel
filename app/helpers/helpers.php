@@ -1,6 +1,6 @@
 <?php
 if (!function_exists('getUserFullName')) {
-    function getUserFullName(?\App\Models\User $user = null): string
+    function getUserFullName(?\App\Http\Models\User $user = null): string
     {
         if (!$user) {
 

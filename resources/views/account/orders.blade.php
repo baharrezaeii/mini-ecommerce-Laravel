@@ -41,7 +41,7 @@
                             {{$order->created_at->toJalali()->format('Y/m/d')}}
                         </td>
                         <td class="px-6 py-5">
-                            {{number_format($order->final_price)}}
+                            {{number_format($order->total_price)}}
                             تومان
                         </td>
                         <td class="px-6 py-5 font-DanaDemiBold">

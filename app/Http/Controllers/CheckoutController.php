@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\CartItemNotFoundException;
 use App\Http\Requests\CheckoutPostRequest;
 use App\Services\CartService;
 use App\Services\OrderService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class CheckoutController
 {
@@ -30,11 +32,20 @@ class CheckoutController
             'description',
         ]);
 
-//        try {
-        OrderService::register($checkoutData);
-//        }catch (\Exception $exception){
-//            return back();
-//        }
+        try {
+            OrderService::register($checkoutData);
+        } catch (CartItemNotFoundException $exception) {
+            return back()
+                ->withErrors([
+                'general' => $exception->getMessage()
+            ]);
+        } catch (\Exception $exception) {
+            Log::error($exception);
+
+            return back()->withErrors([
+                'general' => 'خطایی رخ داده است با پشتیبانی ارتباط بگیرید.'
+            ]);
+        }
         return redirect()->route('account.orders');
 
     }
