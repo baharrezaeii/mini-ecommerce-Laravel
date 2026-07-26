@@ -107,8 +107,8 @@
                     <li class="p-3 border-bottom">
                         <div class="d-flex align-items-center">
                             <div>
-                                <p class="mb-0 fw-semibold lh-1">Admin Admin</p>
-                                <span class="fs-11 text-muted">admin@gmail.com</span>
+                                <p class="mb-0 fw-semibold lh-1">{{auth('admin')->user()->full_name}}</p>
+                                <span class="fs-11 text-muted">{{auth('admin')->user()->username}}</span>
                             </div>
                         </div>
                     </li>
@@ -132,7 +132,7 @@
 
         </ul>
         <!-- End::header-content-right -->
-
+    </div>
 
     <!-- End::main-header-container -->
 

@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class EditProfilePostRequest extends FormRequest
+class UserUpdateRequest extends FormRequest
 {
+
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -34,26 +36,26 @@ class EditProfilePostRequest extends FormRequest
                 'persian_alpha',
                 'min:3',
                 'max:100',
-                'unique:App\Http\Models\User'
+
             ],
             'mobile' => [
                 'required',
                 'string',
                 'ir_mobile:zero',
-                'unique:App\Http\Models\User,mobile,' . auth()->id()
-            ],
+                'unique:users,mobile,' . $this->route('user')->id ],
+
             'password' => [
-                'required',
+                'nullable',
                 'string',
                 'min:6',
                 'max:255',
-                'confirmed'
+
             ],
             'email' => [
                 'required',
                 'max:150',
                 'email',
-                'unique:App\Http\Models\User'
+                'unique:users,mobile,' .$this->route('user')->id
             ]
         ];
     }

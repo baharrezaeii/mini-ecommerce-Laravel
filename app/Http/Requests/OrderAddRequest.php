@@ -26,7 +26,7 @@ class OrderAddRequest extends FormRequest
             'product_id' => [
                 'required',
                 'int',
-                'exists:App\Models\Product,id'
+                'exists:App\Http\Models\Product,id'
             ],
             'qty' => [
                 'required',

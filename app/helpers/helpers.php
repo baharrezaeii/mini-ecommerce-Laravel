@@ -58,10 +58,30 @@ if (!function_exists('activeSort')) {
 }
 
 if (!function_exists('getUserCartCount')) {
-    function getUserCartCount():int
+    function getUserCartCount(): int
     {
-       return \App\Services\CartService::getCount();
+        return \App\Services\CartService::getCount();
     }
+}
+
+
+//admin
+if (!function_exists('activeAdminSidebar')) {
+    function activeAdminSidebar(string|array $routeNames): string
+    {
+        $currentRouteName = \Illuminate\Support\Facades\Route::currentRouteName();
+
+        if (is_string($routeNames)) {
+            $routeNames = [$routeNames];
+        }
+
+
+        if (in_array($currentRouteName, $routeNames)) {
+            return 'active';
+        }
+        return '';
+    }
+
 }
 
 

@@ -28,15 +28,14 @@ class RegisterPostRequest extends FormRequest
                 'persian_alpha',
                 'min:2',
                 'max:100',
-                'unique:App\Models\User'
+                'unique:App\Http\Models\User'
             ],
             'last_name' => [
                 'required',
                 'persian_alpha',
                 'min:3',
                 'max:100',
-                'unique:App\Models\User'
-            ],
+                'unique:App\Http\Models\User'            ],
             'password' => [
                 'required',
                 'string',
@@ -47,15 +46,13 @@ class RegisterPostRequest extends FormRequest
             'mobile' => [
                 'required',
                 'ir_mobile:zero',
-                'unique:App\Models\User'
-
+                'unique:App\Http\Models\User'
             ],
             'email' => [
                 'required',
                 'max:150',
                 'email',
-                'unique:App\Models\User'
-            ]
+                'unique:App\Http\Models\User'            ]
         ];
     }
 }
