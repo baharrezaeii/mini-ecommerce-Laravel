@@ -56,8 +56,15 @@ class UserController extends Controller
 
     public function show(User $user)
     {
+        $user->load([
+            'orders' => function ($query) {
+                $query->orderByDesc('created_at')->limit(5);
+            }
+        ]);
+
         return view('admin.users.show', compact('user'));
     }
+
 
     public function edit(User $user)
     {

@@ -11,17 +11,20 @@ class ProductController
 {
     public function index()
     {
+
         $products = Product::query()
             ->applySort()
             ->applyFilter()
             ->applySearch()
-            ->where('status', '=', ProductStatus::DRAFT)
+            ->where('status', '=', ProductStatus::PUBLISHED)
             ->paginate()
             ->withQueryString();
 
         $productCategories = ProductCategory::all();
 
+
         return view('products.index', compact('products', 'productCategories'));
+
 
     }
 

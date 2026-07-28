@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\ProductAdminController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,14 +41,43 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::put('update', 'update')->name('update');
 
                 Route::delete('destroy', 'destroy')->name('destroy');
-
             });
-
-
         });
 
+        Route::prefix('orders')->name('orders.')->controller(OrderController::class)->group(function () {
 
+            Route::get('/', 'index')->name('index');
+
+            Route::prefix('{order}')->group(function () {
+
+                Route::get('show', 'show')->name('show');
+
+                Route::get('edit', 'edit')->name('edit');
+                Route::put('update', 'update')->name('update');
+
+                Route::delete('destroy', 'destroy')->name('destroy');
+            });
+        });
+
+        Route::prefix('products')->name('products.')->controller(ProductAdminController::class)->group(function () {
+
+            Route::get('/', 'index')->name('index');
+
+            Route::get('create', 'create')->name('create');
+            Route::post('store', 'store')->name('store');
+
+            Route::prefix('{product}')->group(function () {
+
+                Route::get('show', 'show')->name('show');
+
+                Route::get('edit', 'edit')->name('edit');
+                Route::put('update', 'update')->name('update');
+
+                Route::delete('destroy', 'destroy')->name('destroy');
+            });
+        });
     });
+
 });
 
 

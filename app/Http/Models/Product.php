@@ -6,6 +6,7 @@
 
 namespace App\Http\Models;
 
+use App\Enums\ProductStatus;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
@@ -47,7 +48,7 @@ class Product extends Model
         'price' => 'int',
         'discount' => 'int',
         'qty' => 'int',
-        'status' => 'int'
+        'status' => ProductStatus::class
     ];
 
     protected $fillable = [
@@ -74,6 +75,11 @@ class Product extends Model
     public function productImages()
     {
         return $this->hasMany(ProductImage::class);
+    }
+    public function defaultImage()
+    {
+        return $this->hasOne(ProductImage::class)
+            ->where('is_default', true);
     }
 
     #[Scope]

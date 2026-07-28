@@ -69,8 +69,8 @@
 
                                     <!-- Start::slide -->
                                     <li class="slide  ">
-                                        <a href="http://127.0.0.1:8000/admin/orders"
-                                           class="side-menu__item ">
+                                        <a href="{{route('admin.orders.index')}}"
+                                           class="side-menu__item  {{activeAdminSidebar(['admin.orders.index','admin.orders.show','admin.orders.edit'])}}">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" width="1em"
                                                  height="1em" viewBox="0 0 24 24">
                                                 <path fill="none" stroke="currentColor" stroke-linecap="round"
@@ -85,8 +85,8 @@
 
                                     <!-- Start::slide -->
                                     <li class="slide  ">
-                                        <a href="http://127.0.0.1:8000/admin/products"
-                                           class="side-menu__item ">
+                                        <a href="{{route('admin.products.index')}}"
+                                           class="side-menu__item {{activeAdminSidebar(['admin.products.index','admin.products.show','admin.products.edit','admin.products.create'])}} ">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon"
                                                  width="1em" height="1em" viewBox="0 0 24 24">
                                                 <path fill="none" stroke="currentColor" stroke-linecap="round"
@@ -123,7 +123,7 @@
                                     <!-- Start::slide -->
                                     <li class="slide active">
                                         <a href="http://127.0.0.1:8000/admin/admins"
-                                           class="side-menu__item active">
+                                           class="side-menu__item ">
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                  class="side-menu__icon"
                                                  width="1em"
