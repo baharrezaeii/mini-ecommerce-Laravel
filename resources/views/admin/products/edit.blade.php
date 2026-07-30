@@ -45,7 +45,7 @@
                                            value= "{{ old('en_name',$product->en_name)}}">
 
                                 </div>
-                                @error('en_name ')
+                                @error('en_name')
                                 <span style="color: red"> {{$message}}</span>
                                 @enderror
 
@@ -68,7 +68,7 @@
                                     @error('product_category_id')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
-
+                                </div>
                                 <!-- Price -->
                                 <div class="col-xl-6">
                                     <label class="form-label">قیمت</label>
@@ -136,7 +136,7 @@
                                              style="width:100%;height:100%;object-fit:cover;"
                                              alt="{{ $product->name }}">
 
-                                        <a href="http://127.0.0.1:8000/admin/products/1/remove-image/4"
+                                        <a href="{{route('admin.products.remove-image',[$product,$image])}}"
                                            class="remove-btn btn btn-sm btn-danger position-absolute top-0 end-0 delete-image"
                                            data-confirm="حذف این تصویر؟">×</a>
                                     </div>
@@ -166,7 +166,7 @@
                             <button type="submit" class="btn btn-primary">ذخیره تغییرات</button>
                         </div>
                     </div>
-                    </div>
+
                 </form>
 
             </div>

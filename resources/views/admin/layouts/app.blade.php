@@ -8,7 +8,7 @@
     data-menu-styles="light"
     dir="rtl"
     loader="enable"
-    data-vertical-style="overlay">
+    data-vertical-style="default">
 <head>
     <!-- Meta Data -->
     <meta charset="UTF-8">

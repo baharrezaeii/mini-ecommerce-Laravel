@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Models\Order;
-use App\Http\Models\OrderItem;
 use App\Http\Models\User;
 use App\Http\Requests\Admin\UserUpdateRequest;
 use Illuminate\Database\Eloquent\Builder;

@@ -4,8 +4,14 @@
 
         <div class="row">
             <div class="col-xl-12">
-                <form action="{{route('admin.products.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('admin.products.store')}}"
+                      method="POST"
+                      enctype="multipart/form-data">
+
                     @csrf
+                    @error('general')
+                    <span style="color: red">{{$message}}</span>
+                    @enderror()
 
                     <div class="card custom-card">
                         <div class="card-header">
@@ -37,11 +43,11 @@
                                 <div class="col-xl-6">
                                     <label class="form-label">نام انگلیسی</label>
                                     <input type="text" class="form-control"
-                                           name="name_en"
+                                           name="en_name"
                                            placeholder="نام انگلیسی را وارد کنید"
-                                           value="{{old('name_en')}}">
+                                           value="{{old('en_name')}}">
 
-                                    @error('name_en')
+                                    @error('en_name')
                                     <span style="color: red"> {{$message}}</span>
                                     @enderror
                                 </div>

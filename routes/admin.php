@@ -65,8 +65,25 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
             Route::get('create', 'create')->name('create');
             Route::post('store', 'store')->name('store');
-
             Route::prefix('{product}')->group(function () {
+
+                Route::get('show', 'show')->name('show');
+
+                Route::get('edit', 'edit')->name('edit');
+                Route::put('update', 'update')->name('update');
+
+                Route::delete('remove-image/{image}', 'removeImage')->name('remove-image');
+
+                Route::delete('destroy', 'destroy')->name('destroy');
+            });
+        });
+
+
+        Route::prefix('categories')->name('categories.')->controller(OrderController::class)->group(function () {
+
+            Route::get('/', 'index')->name('index');
+
+            Route::prefix('{order}')->group(function () {
 
                 Route::get('show', 'show')->name('show');
 

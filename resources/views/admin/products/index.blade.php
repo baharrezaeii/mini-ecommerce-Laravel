@@ -94,9 +94,15 @@
                                     <td>
                                         <div class="d-flex">
                                                 <span class="avatar avatar-md avatar-square bg-light">
-                                                      <img
-                                                          src="{{ asset($product->defaultImage?->file ?? 'assets/images/default.jpg') }}"
-                                                          alt="{{ $product->name }}">
+                                                        @if($product->defaultImage?->file)
+                                                        <img
+                                                            src="{{ asset('storage/' . $product->defaultImage->file->path) }}"
+                                                            alt="{{ $product->name }}">
+                                                    @else
+                                                        <img
+                                                            src="{{ asset('assets/images/default.jpg') }}"
+                                                            alt="Default Image">
+                                                    @endif
                                                 </span>
                                             <div class="ms-2">
                                                 <p class="fw-semibold mb-0 name-limit">
@@ -135,12 +141,11 @@
                                             </a>
                                             <form action="{{route('admin.products.destroy',$product)}}"
                                                   method="POST"
-                                                  onsubmit="return confirm('آیا از حذف این محصول مطمئن هستید؟')"
-                                            >
-                                                <input type="hidden" name="_token"
-                                                       value="VofHLLAqMD1Drv23vG8MgkBtFMjNl7t6G8gfBpxL"
-                                                       autocomplete="off"> <input type="hidden" name="_method"
-                                                                                  value="DELETE">
+                                                  style="display:inline;"
+                                                  onsubmit="return confirm('آیا از حذف این محصول مطمئن هستید؟')">
+                                                @csrf
+                                                @method('DELETE')
+
                                                 <button type="submit" class="btn btn-icon btn-sm btn-danger-light">
                                                     <i class="ri-delete-bin-line"></i>
                                                 </button>
