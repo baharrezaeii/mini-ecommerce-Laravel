@@ -101,8 +101,8 @@
 
                                     <!-- Start::slide -->
                                     <li class="slide ">
-                                        <a href="http://127.0.0.1:8000/admin/categories"
-                                           class="side-menu__item ">
+                                        <a href="{{route('admin.categories.index')}}"
+                                           class="side-menu__item {{activeAdminSidebar(['admin.categories.index','admin.categories.show','admin.categories.edit','admin.categories.create'])}}  ">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" width="1em"
                                                  height="1em" viewBox="0 0 24 24">
                                                 <g fill="none" stroke="currentColor" stroke-linecap="round"

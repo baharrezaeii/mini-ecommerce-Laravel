@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductAdminController;
@@ -79,21 +80,27 @@ Route::prefix('admin')->name('admin.')->group(function () {
         });
 
 
-        Route::prefix('categories')->name('categories.')->controller(OrderController::class)->group(function () {
+        Route::prefix('categories')->name('categories.')->controller(CategoryController::class)
+            ->group(function () {
 
-            Route::get('/', 'index')->name('index');
+                Route::get('/', 'index')->name('index');
 
-            Route::prefix('{order}')->group(function () {
+                Route::get('create', 'create')->name('create');
+                Route::post('store', 'store')->name('store');
 
-                Route::get('show', 'show')->name('show');
+                Route::prefix('{category}')->group(function () {
 
-                Route::get('edit', 'edit')->name('edit');
-                Route::put('update', 'update')->name('update');
+                    Route::get('show', 'show')->name('show');
 
-                Route::delete('destroy', 'destroy')->name('destroy');
+                    Route::get('edit', 'edit')->name('edit');
+                    Route::put('update', 'update')->name('update');
+
+                    Route::delete('destroy', 'destroy')->name('destroy');
+                });
             });
-        });
+
     });
+
 
 });
 
