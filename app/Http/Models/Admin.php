@@ -38,9 +38,19 @@ class Admin extends User
 	];
 
 	protected $fillable = [
-		'full_name',
-		'username',
-		'password',
-		'status'
-	];
+        'full_name',
+        'username',
+        'password',
+        'status',
+        'file_id',
+        'email',
+        'last_name',
+        'first_name'
+    ];
+
+
+    public function file()
+    {
+        return $this->belongsTo(File::class);
+    }
 }

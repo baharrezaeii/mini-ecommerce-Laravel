@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -91,6 +92,23 @@ Route::prefix('admin')->name('admin.')->group(function () {
                 Route::prefix('{category}')->group(function () {
 
                     Route::get('show', 'show')->name('show');
+
+                    Route::get('edit', 'edit')->name('edit');
+                    Route::put('update', 'update')->name('update');
+
+                    Route::delete('destroy', 'destroy')->name('destroy');
+                });
+            });
+
+        Route::prefix('admins')->name('admins.')->controller(AdminController::class)
+            ->group(function () {
+
+                Route::get('/', 'index')->name('index');
+
+                Route::get('create', 'create')->name('create');
+                Route::post('store', 'store')->name('store');
+
+                Route::prefix('{admin}')->group(function () {
 
                     Route::get('edit', 'edit')->name('edit');
                     Route::put('update', 'update')->name('update');

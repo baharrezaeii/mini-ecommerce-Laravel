@@ -122,8 +122,8 @@
 
                                     <!-- Start::slide -->
                                     <li class="slide active">
-                                        <a href="http://127.0.0.1:8000/admin/admins"
-                                           class="side-menu__item ">
+                                        <a href="{{route('admin.admins.index')}}"
+                                           class="side-menu__item {{activeAdminSidebar(['admin.admins.index','admin.admins.edit','admin.admins.create'])}}  " >
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                  class="side-menu__icon"
                                                  width="1em"
