@@ -67,7 +67,10 @@
                                 <div class="flex flex-col sm:flex-row items-center gap-6">
                                     <!-- IMG AND COUNT BTN -->
                                     <div class="flex w-fit flex-col">
-                                        <img src="{{asset('assets/images/products/8.webp')}}" class="w-36" alt="">
+                                        <img
+                                            src="{{ getFileUrl($cartItem['product']->defaultImage?->file_id) }}"
+                                            class="w-36 h-36 object-cover rounded-lg"
+                                            alt="{{ $cartItem['product']->name }}">
                                         <button
                                             type="button"
                                             class="flex items-center justify-between gap-x-1 rounded-lg border border-gray-200 dark:border-white/20 py-1 px-2">

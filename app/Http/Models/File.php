@@ -48,4 +48,8 @@ class File extends Model
 	{
 		return $this->hasMany(ProductImage::class);
 	}
+
+    public function sliders(){
+        return $this->hasMany(Slider::class);
+    }
 }

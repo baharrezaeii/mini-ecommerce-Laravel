@@ -52,115 +52,95 @@
 
                         </span>
                         <div
-                                    class="grid grid-cols-12 child:col-span-3 child:app-border gap-x-4 child:size-16 child:rounded-lg child:cursor-pointer">
+                            class="grid grid-cols-12 child:col-span-3 child:app-border gap-x-4 child:size-16 child:rounded-lg child:cursor-pointer">
 
-                                    @foreach($product->productImages as $image)
+                            @foreach($product->productImages as $image)
 
-                                        <div class="p-1">
-                                            <img
-                                                src="{{ getFileUrl($image->file_id) }}"
-                                                class="object-cover rounded-lg"
-                                                onclick="changeImage(this.src)">
-                                        </div>
-
-                                    @endforeach
-
+                                <div class="p-1">
+                                    <img
+                                        src="{{ getFileUrl($image->file_id) }}"
+                                        class="object-cover rounded-lg"
+                                        onclick="changeImage('{{ getFileUrl($image->file_id) }}')">
                                 </div>
+                            @endforeach
+
+                        </div>
+
+            <div class="slider-modal">
+                <div class="flex w-full h-fit items-center justify-between">
+                    <h1 class="font-DanaMedium text-lg">
+                        تصاویر محصول
+                    </h1>
+                    <svg class="size-6 cursor-pointer close-sliderModal">
+                        <use href="#x-mark"></use>
+                    </svg>
+                </div>
+
+                <div class="swiper ProductDetailsSlider mt-14 px-10 w-96 relative">
+                    <div class="swiper-wrapper w-full child:w-full child:rounded-lg child:overflow-hidden">
+                        @foreach($product->productImages as $image)
+                            <div class="swiper-slide">
+                                <img src="{{getFileUrl($image?->file_id)}}" alt="">
                             </div>
-
-            <script>
-                function changeImage(src) {
-                    document.getElementById('mainImage').src = src;
-                }
-            </script>
-                    <div class="slider-modal">
-                        <div class="flex w-full h-fit items-center justify-between">
-                            <h1 class="font-DanaMedium text-lg">
-                                تصاویر گوشی موبایل اپل مدل iPhone 16 دو سیم کارت
-                            </h1>
-                            <svg class="size-6 cursor-pointer close-sliderModal">
-                                <use href="#x-mark"></use>
-                            </svg>
-                        </div>
-
-                        <div class="swiper ProductDetailsSlider mt-14 px-10 w-96 relative">
-                            <div class="swiper-wrapper w-[50%] child:w-full child:rounded-lg child:overflow-hidden">
-                                <div class="swiper-slide">
-                                    <img src="{{asset('assets/images/products/11.png')}}" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{asset('assets/images/products/12.webp')}}" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{asset('assets/images/products/13.webp')}}" alt="">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="{{asset('assets/images/products/14.webp')}}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <button
-                            class="slider-navigate_btn absolute right-40 top-[17rem] border dark:border-gray-700 border-gray-200 button-prev-ProductDetailsSlider z-20">
-                            <svg class="size-6 -rotate-90">
-                                <use href="#chevron"/>
-                            </svg>
-                        </button>
-                        <button
-                            class="slider-navigate_btn absolute left-40 top-[17rem] border dark:border-gray-700 border-gray-200 button-next-ProductDetailsSlider z-10">
-                            <svg class="size-6 rotate-90">
-                                <use href="#chevron"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <!-- INFOS -->
-                    <div class="w-full md:w-3/4 flex flex-col gap-y-7">
-                        <div class="flex items-center justify-between">
-                            <span class="font-DanaMedium text-sky-400">{{$product->productCategory->name}}</span>
-                        </div>
-                        <!-- MOBILE SLIDER -->
-                        <div class="flex md:hidden">
-                            <div class="swiper MobileProductSlider w-full">
-                                <div class="swiper-wrapper w-full child:w-full child:overflow-hidden child:rounded-lg">
-                                    <div class="swiper-slide">
-                                        <img src="{{asset('assets/images/products/11.png')}}" alt="">
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="{{asset('assets/images/products/12.webp')}}" alt="">
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="{{asset('assets/images/products/13.webp')}}" alt="">
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="{{asset('assets/images/products/14.webp')}}" alt="">
-                                    </div>
-                                </div>
-                                <div class="swiper-pagination MobileProductSlider-pagination"></div>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col gap-y-3">
-                            <p class="text-lg font-DanaDemiBold dark:text-gray-300">
-                                {{$product->name}}
-                            </p>
-                            <p class="text-sm text-gray-300 dark:text-gray-500">
-                                {{$product->en_name}}
-                            </p>
-                            <p class="text-sm text-gray-300 dark:text-gray-500">
-                                موجودی:
-                                {{$product->qty}}
-                            </p>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
-                <div
-                    class="mt-10 lg:mr-2 grid grid-cols-12 child:col-span-6 xl:child:col-span-3 gap-x-1 gap-y-2 lg:gap-4 child:border child:text-gray-400 child:dark:border-white/20 child:border-gray-200 child:rounded-lg child:h-12  child:p-2 child:flex child:items-center child:gap-x-1 lg:child:gap-x-2 child:text-sm lg:text-base">
+                <button
+                    class="slider-navigate_btn absolute right-40 top-[17rem] border dark:border-gray-700 border-gray-200 button-prev-ProductDetailsSlider z-20">
+                    <svg class="size-6 -rotate-90">
+                        <use href="#chevron"/>
+                    </svg>
+                </button>
+                <button
+                    class="slider-navigate_btn absolute left-40 top-[17rem] border dark:border-gray-700 border-gray-200 button-next-ProductDetailsSlider z-10">
+                    <svg class="size-6 rotate-90">
+                        <use href="#chevron"/>
+                    </svg>
+                </button>
+            </div>
+                    </div>
+            <!-- INFOS -->
+            <div class="w-full md:w-3/4 flex flex-col gap-y-7">
+                <div class="flex items-center justify-between">
+                    <span class="font-DanaMedium text-sky-400">{{$product->productCategory->name}}</span>
+                </div>
+                <!-- MOBILE SLIDER -->
+                <div class="flex md:hidden">
+                    <div class="swiper MobileProductSlider w-full">
+                        <div class="swiper-wrapper w-full child:w-full child:overflow-hidden child:rounded-lg">
+                            @foreach($product->productImages as $image)
+                                <div class="swiper-slide">
+                                    <img src="{{getFileUrl($image?->file_id)}}" alt="">
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="swiper-pagination MobileProductSlider-pagination"></div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-y-3">
+                    <p class="text-lg font-DanaDemiBold dark:text-gray-300">
+                        {{$product->name}}
+                    </p>
+                    <p class="text-sm text-gray-300 dark:text-gray-500">
+                        {{$product->en_name}}
+                    </p>
+                    <p class="text-sm text-gray-300 dark:text-gray-500">
+                        موجودی:
+                        {{$product->qty}}
+                    </p>
+                </div>
+            </div>
+                </div>
+            <div
+                class="mt-10 lg:mr-2 grid grid-cols-12 child:col-span-6 xl:child:col-span-3 gap-x-1 gap-y-2 lg:gap-4 child:border child:text-gray-400 child:dark:border-white/20 child:border-gray-200 child:rounded-lg child:h-12  child:p-2 child:flex child:items-center child:gap-x-1 lg:child:gap-x-2 child:text-sm lg:text-base">
                     <span>
                         <svg class="w-4 h-4 lg:w-6 lg:h-6">
                             <use href="#arrow-path-rounded-square"></use>
                         </svg>
                         <p>ضمانت بازگشت کالا</p>
                     </span>
-                    <span>
+                <span>
                         <svg class="w-4 h-4 lg:w-6 lg:h-6">
                             <use href="#check-badge"></use>
                         </svg>
@@ -168,20 +148,21 @@
                             تضمین اصالت کالا
                         </p>
                     </span>
-                    <span>
+                <span>
                         <svg class="w-4 h-4 lg:w-6 lg:h-6">
                             <use href="#calender-day"></use>
                         </svg>
                         <p>پشتیبانی کل هفته</p>
                     </span>
-                    <span>
+                <span>
                         <svg class="w-4 h-4 lg:w-6 lg:h-6">
                             <use href="#truke"></use>
                         </svg>
                         <p>ارسال به سراسر ایران </p>
                     </span>
-                </div>
             </div>
+            </div>
+
             <!-- PRICE & ADD TO CART BOX -->
             <div class="w-full lg:w-1/4 lg:sticky top-5 flex flex-col gap-y-6">
                 <!-- PRICE -->
@@ -199,7 +180,7 @@
                 @endif
 
                 <form
-                    action="http://127.0.0.1:8000/cart/add"
+                    action="{{route('cart.add')}}"
                     method="POST"
                 >
                     @csrf
@@ -245,6 +226,7 @@
                 </form>
 
             </div>
+
         </section>
 
         @if($product->description)
@@ -317,4 +299,11 @@
             </section>
         @endif
     </main>
+    @push('js')
+        <script>
+            function changeImage(src) {
+                document.getElementById('mainImage').src = src;
+            }
+        </script>
+    @endpush
 @endsection

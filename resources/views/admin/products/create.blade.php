@@ -1,7 +1,6 @@
 @extends('admin.layouts.app')
 @section('content')
     <div class="container-fluid pt-4">
-
         <div class="row">
             <div class="col-xl-12">
                 <form action="{{route('admin.products.store')}}"

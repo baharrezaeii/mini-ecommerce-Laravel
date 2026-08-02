@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\ProductStatus;
 use App\Http\Models\Product;
 use App\Http\Models\ProductCategory;
+use App\Http\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -14,6 +15,13 @@ class IndexController extends Controller
     public function index()
     {
         $title = 'صفحه اصلی';
+
+        $sliders = Slider::query()
+            ->where('status',1)
+            ->with('image')
+            ->get();
+
+
 
         $productCategories = ProductCategory::query()
             ->limit(5)
@@ -31,7 +39,12 @@ class IndexController extends Controller
             ->get();
 
 
-        return view('index', compact('title', 'productCategories', 'newestProducts','bestsellingProducts'));
+        return view('index', compact(
+            'title',
+            'productCategories',
+            'newestProducts',
+            'bestsellingProducts',
+        'sliders'));
 
     }
 }

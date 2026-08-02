@@ -5,18 +5,13 @@
     <div class="px-3 lg:container group w-full mt-4 lg:mt-10">
         <div dir="rtl" class="swiper header-slider h-52 md:h-96 cursor-pointer">
             <div class="swiper-wrapper">
-                <a href="shop.html" class="swiper-slide">
-                    <img src="{{asset('assets/images/slider/4.webp')}}" class="rounded-xl" alt="">
+                @foreach($sliders as $slider)
+                <a href="{{$slider->url ?? '#'}}" class="swiper-slide">
+                    <img src="{{getFileUrl($slider->image_id)}}"
+                         class="rounded-xl"
+                         alt="{{$slider->title}}">
                 </a>
-                <a href="shop.html" class="swiper-slide">
-                    <img src="{{asset('assets/images/slider/1.jpg')}}" class="rounded-xl" alt="">
-                </a>
-                <a href="shop.html" class="swiper-slide">
-                    <img src="{{asset('assets/images/slider/2.jpg')}}" class="rounded-xl" alt="">
-                </a>
-                <a href="shop.html" class="swiper-slide">
-                    <img src="{{asset('assets/images/slider/3.gif')}}" class="rounded-xl" alt="">
-                </a>
+                @endforeach
             </div>
             <div class="swiper-pagination-wrapper">
                 <div class="swiper-pagination"></div>
