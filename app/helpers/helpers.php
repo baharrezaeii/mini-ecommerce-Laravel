@@ -65,16 +65,16 @@ if (!function_exists('getUserCartCount')) {
 }
 
 if (!function_exists('getFileUrl')) {
-    function getFileUrl(?int $fileId):?string
+    function getFileUrl(?int $fileId): ?string
     {
         if (!$fileId) {
             return null;
         }
-       $file=\App\Http\Models\File::find($fileId);
-       if (!$file) {
-           return null;
-       }
-       return Storage::disk('public')->url($file->path);
+        $file = \App\Http\Models\File::find($fileId);
+        if (!$file) {
+            return null;
+        }
+        return Storage::disk('public')->url($file->path);
     }
 }
 
@@ -94,6 +94,29 @@ if (!function_exists('activeAdminSidebar')) {
             return 'active';
         }
         return '';
+    }
+
+}
+
+
+if (!function_exists('settings')) {
+    function settings(?string $code): ?string
+    {
+
+
+        if (!$code) {
+            return null;
+        }
+        $settings = \App\Http\Models\Setting::query()
+            ->whereCode($code)
+            ->first();
+
+        if (!$settings) {
+            return null;
+        }
+        return $settings->value;
+
+
     }
 
 }

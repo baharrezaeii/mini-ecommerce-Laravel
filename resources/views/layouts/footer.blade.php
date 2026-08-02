@@ -8,25 +8,29 @@
                     فروشگاه درنیکا
                 </h2>
                 <p class="leading-8 text-gray-400 mb-5">
-                    در فروشگاه آنلاین ما، برندهای معتبر جهانی را با کیفیت بالا و قیمتی مناسب برای شما فراهم آورده‌ایم.
+                    {{ settings('aboutShop') }}
                 </p>
                 <div class="flex items-center gap-x-4">
-                    <a href="#" class="size-10 bg-gray-950 rounded-xl flex-center">
+                    <a href="{{ settings('instagram') }}" target="_blank"
+                       class="size-10 bg-gray-950 rounded-xl flex-center">
                         <svg class="size-6 text-blue-500">
                             <use href="#instagram"></use>
                         </svg>
                     </a>
-                    <a href="#" class="size-10 bg-gray-950 rounded-xl flex-center">
+                    <a href="{{ settings('whatsapp') }}" target="_blank"
+                       class="size-10 bg-gray-950 rounded-xl flex-center">
                         <svg class="size-6 text-blue-500">
                             <use href="#whatsapp"></use>
                         </svg>
                     </a>
-                    <a href="#" class="size-10 bg-gray-950 rounded-xl flex-center">
+                    <a href="{{ settings('linkedin') }}" target="_blank"
+                       class="size-10 bg-gray-950 rounded-xl flex-center">
                         <svg class="size-6 text-blue-500">
                             <use href="#linkedin"></use>
                         </svg>
                     </a>
-                    <a href="#" class="size-10 bg-gray-950 rounded-xl flex-center">
+                    <a href="{{ settings('youtube') }}" target="_blank"
+                       class="size-10 bg-gray-950 rounded-xl flex-center">
                         <svg class="size-6 text-blue-500">
                             <use href="#youtube"></use>
                         </svg>
@@ -41,7 +45,7 @@
                             <a href="{{route('index')}}">صفحه اصلی</a>
                         </li>
                         <li>
-                            <a href="http://127.0.0.1:8000/products">فروشگاه</a>
+                            <a href="{{route('products.index')}}">فروشگاه</a>
                         </li>
                         <li>
                             <a href="{{route('auth.login.index')}}">ورود به حساب کاربری</a>
@@ -58,15 +62,21 @@
                     class="flex flex-col child:flex child:text-gray-400 child:items-center child:justify-between gap-y-5">
                     <li>
                         <p>شماره تماس :</p>
-                        <p dir="ltr">02191013171</p>
+                        <p dir="ltr">
+                            {{ settings('phone') }}
+                        </p>
                     </li>
                     <li>
                         <p>آدرس ایمیل :</p>
-                        <p>info@dornica.net</p>
+                        <p>
+                            {{ settings('email') }}
+                        </p>
                     </li>
                     <li>
                         <p>آدرس :</p>
-                        <p> مازندران، ساری، کمربندی غربی</p>
+                        <p>
+                            {{ settings('address') }}
+                        </p>
                     </li>
                 </ul>
             </div>

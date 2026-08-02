@@ -20,11 +20,6 @@
             </a>
         </li>
 
-        <li class="menu-item">
-            <a href="/" class="menu-item_link">
-                تماس با ما
-            </a>
-        </li>
 
         <li class="menu-item">
             <a href="/" class="menu-item_link">

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductAdminController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
@@ -117,11 +118,21 @@ Route::prefix('admin')->name('admin.')->group(function () {
                     Route::delete('destroy', 'destroy')->name('destroy');
                 });
             });
+
+
         Route::prefix('sliders')->name('sliders.')->controller(SliderController::class)
             ->group(function () {
                 Route::get('/', 'index')->name('index');
                 Route::get('create', 'create')->name('create');
                 Route::post('store', 'store')->name('store');
+            });
+
+
+        Route::prefix('settings')->name('settings.')->controller(SettingController::class)
+            ->group(function () {
+                Route::get('/edit', 'edit')->name('edit');
+                Route::put('/update', 'update')->name('update');
+
             });
 
 
