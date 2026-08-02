@@ -12,15 +12,18 @@ class ProductController
     public function index()
     {
 
+
         $products = Product::query()
             ->applySort()
             ->applyFilter()
             ->applySearch()
             ->where('status', '=', ProductStatus::PUBLISHED)
+            ->with('defaultImage.file')
             ->paginate()
             ->withQueryString();
 
         $productCategories = ProductCategory::all();
+
 
 
         return view('products.index', compact('products', 'productCategories'));
@@ -30,10 +33,15 @@ class ProductController
 
     public function show(Product $product)
     {
-        $product->load('productCategory');
+        $product->load([
+            'productCategory',
+            'productImages.file',
+            'defaultImage.file']);
+
         $relatedProducts = Product::query()
             ->where('product_category_id', '=', $product->product_category_id)
             ->where('id', '!=', $product->id)
+            ->with('defaultImage')
             ->limit(6)
             ->get();
         return view('products.show', compact('product', 'relatedProducts'));

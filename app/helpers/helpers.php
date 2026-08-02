@@ -64,6 +64,20 @@ if (!function_exists('getUserCartCount')) {
     }
 }
 
+if (!function_exists('getFileUrl')) {
+    function getFileUrl(?int $fileId):?string
+    {
+        if (!$fileId) {
+            return null;
+        }
+       $file=\App\Http\Models\File::find($fileId);
+       if (!$file) {
+           return null;
+       }
+       return Storage::disk('public')->url($file->path);
+    }
+}
+
 
 //admin
 if (!function_exists('activeAdminSidebar')) {

@@ -35,15 +35,17 @@
     </div>
     <!-- product img -->
     <a href="{{route('products.show',$product->id)}}">
+
         <img
             class="product-card_img group-hover:opacity-0 absolute"
-            src="{{asset('assets/images/products/1.png')}}"
-            alt=""
+            src="{{getFileUrl($product?->defaultImage?->file_id)}}"
+            alt="{{$product->name}}"
         >
         <img
             class="product-card_img opacity-0 group-hover:opacity-100"
-             src="{{asset('assets/images/products/1.png')}}"
-            alt="">
+            src="{{getFileUrl($product?->defaultImage?->file_id)}}"
+            alt="{{$product->name}}"
+        >
     </a>
     <!--  product footer -->
     <div class="space-y-2">

@@ -70,9 +70,9 @@
             >
                 @foreach($productCategories as $category)
                     <a href="{{route('products.index',['category_id'=>[$category->id =>'on']])}}" class="group flex">
-                        <img src="{{asset('assets/images/category/5.png')}}"
+                        <img src="{{getFileUrl($category?->file_id)}}"
                              class="w-[100px] h-[100px] lg:w-[120px] lg:h-[120px] object-cover group-hover:grayscale group-hover:opacity-90 duration-300"
-                             alt="category1"/>
+                             alt="{{$category->name}}"/>
                         <p class="pt-1 text-sm lg:text-lg line-clamp-1">
                             {{$category->name}}
                         </p>

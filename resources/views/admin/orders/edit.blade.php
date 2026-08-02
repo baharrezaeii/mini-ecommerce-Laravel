@@ -1,4 +1,17 @@
 @extends('admin.layouts.app')
+@section('breadcrumb')
+    <div>
+        <h1 class="page-title fw-medium fs-18 mb-2">ویرایش سفارش</h1>
+        <div class="">
+            <nav>
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="{{route('admin.orders.index')}}">مدیریت سفارشات</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">ویرایش سفارش</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+@endsection
 @section('content')
     <div class="container-fluid pt-4">
 

@@ -169,7 +169,7 @@
 
                     </div>
                     <span class="text-sm text-gray-400 end">
-                        2
+                       {{$products->total()}}
                         کالا
                     </span>
                 </div>

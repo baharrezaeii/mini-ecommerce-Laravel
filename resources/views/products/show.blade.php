@@ -45,32 +45,34 @@
                     <!-- IMAGE SLIDER -->
                     <div class="w-2/4 hidden md:flex flex-col justify-center items-center gap-y-4">
                         <span class="open-sliderModal">
-                            <img src="{{asset('assets/images/products/11.png')}}" class="cursor-pointer object-cover"
-                                 alt="">
+                            <img
+                                id="mainImage"
+                                src="{{ getFileUrl($product->defaultImage?->file_id) }}"
+                                class="cursor-pointer object-cover">
+
                         </span>
                         <div
-                            class="grid grid-cols-12 child:col-span-3 child:app-border gap-x-4 child:size-16 child:rounded-lg child:cursor-pointer">
-                            <div class="p-1 open-sliderModal">
-                                <img src="{{asset('assets/images/products/11.png')}}"
-                                     class="object-cover  rounded-lg">
+                                    class="grid grid-cols-12 child:col-span-3 child:app-border gap-x-4 child:size-16 child:rounded-lg child:cursor-pointer">
+
+                                    @foreach($product->productImages as $image)
+
+                                        <div class="p-1">
+                                            <img
+                                                src="{{ getFileUrl($image->file_id) }}"
+                                                class="object-cover rounded-lg"
+                                                onclick="changeImage(this.src)">
+                                        </div>
+
+                                    @endforeach
+
+                                </div>
                             </div>
-                            <div class="p-1 open-sliderModal">
-                                <img src="{{asset('assets/images/products/12.webp')}}"
-                                     class="object-cover  rounded-lg">
-                            </div>
-                            <div class="p-1 open-sliderModal">
-                                <img src="{{asset('assets/images/products/13.webp')}}"
-                                     class="object-cover  rounded-lg">
-                            </div>
-                            <div class="overflow-hidden relative open-sliderModal">
-                                <svg class="absolute size-8 text-gray-100 top-4 left-4 z-10">
-                                    <use href="#ellipsis"></use>
-                                </svg>
-                                <img src="{{asset('assets/images/products/14.webp')}}"
-                                     class="object-cover rounded-lg blur-sm">
-                            </div>
-                        </div>
-                    </div>
+
+            <script>
+                function changeImage(src) {
+                    document.getElementById('mainImage').src = src;
+                }
+            </script>
                     <div class="slider-modal">
                         <div class="flex w-full h-fit items-center justify-between">
                             <h1 class="font-DanaMedium text-lg">

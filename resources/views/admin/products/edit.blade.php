@@ -1,4 +1,17 @@
 @extends('admin.layouts.app')
+@section('breadcrumb')
+    <div>
+        <h1 class="page-title fw-medium fs-18 mb-2">ویرایش محصول</h1>
+        <div class="">
+            <nav>
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="{{route('admin.products.index')}}">مدیریت محصولات</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">ویرایش محصول</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+@endsection
 @section('content')
     <div class="container-fluid pt-4">
 
@@ -124,53 +137,103 @@
                             </div>
 
                             <!-- Product Images -->
-                                <div
-                                    class="image-upload-wrapper d-flex flex-wrap gap-2 px-0 pt-0 mt-3"
-                                    id="imagePreviewContainer"
-                                    style=" border-radius: 8px; padding: 10px;"
-                                >
-                                    @foreach($product->productImages as $image)
+
+                            <div
+                                class="image-upload-wrapper d-flex flex-wrap gap-2 px-0 pt-0 mt-3"
+                                id="imagePreviewContainer"
+                                style="border-radius:8px;padding:10px;"
+                            >
+
+                                @foreach($product->productImages as $image)
                                     <div class="position-relative" style="width:150px;height:150px;">
-                                        <img src="{{ asset('storage/'.$image->file->path) }}"
-                                             class="img-fluid rounded"
-                                             style="width:100%;height:100%;object-fit:cover;"
-                                             alt="{{ $product->name }}">
 
-                                        <a href="{{route('admin.products.remove-image',[$product,$image])}}"
-                                           class="remove-btn btn btn-sm btn-danger position-absolute top-0 end-0 delete-image"
-                                           data-confirm="حذف این تصویر؟">×</a>
+                                        <img
+                                            src="{{ asset('storage/'.$image->file->path) }}"
+                                            class="w-100 h-100 rounded"
+                                            style="object-fit: cover;">
+
+                                        <button
+                                            type="button"
+                                            class="btn btn-sm btn-danger position-absolute top-0 end-0 delete-image"
+                                            data-url="{{ route('admin.products.remove-image', [$product->id,$image->id]) }}">
+                                            ×
+                                        </button>
+
                                     </div>
-                                    @endforeach
-                                    <label
-                                        id="uploadPlaceholder"
-                                        class="upload-placeholder"
-                                        for="imageInput"
-                                        style="cursor: pointer; width:150px; height:150px; display: flex; justify-content: center; align-items: center; border: 2px dashed #ccc; border-radius: 8px; padding: 20px; text-align: center;"
-                                    >
-                                        <div>📷<br><strong>آپلود یا کشیدن</strong></div>
-                                        <small style="color:#999;">JPG / PNG / JPEG / WEBP</small>
-                                    </label>
-                                    <input
-                                        id="imageInput"
-                                        name="images[]"
-                                        type="file"
-                                        accept=".jpg,.png,.jpeg,.webp"
-                                        multiple
-                                        style="display:none"
-                                    />
-                                </div>
+                                @endforeach
 
-                        </div>
+                                <label
+                                    id="uploadPlaceholder"
+                                    class="upload-placeholder"
+                                    for="imageInput"
+                                    style="cursor:pointer;width:150px;height:150px;display:flex;justify-content:center;align-items:center;border:2px dashed #ccc;border-radius:8px;padding:20px;text-align:center;"
+                                >
+                                    <div>
+                                        📷<br>
+                                        <strong>آپلود یا کشیدن</strong>
+                                        <br>
+                                        <small style="color:#999;">JPG / PNG / JPEG / WEBP</small>
+                                    </div>
+                                </label>
+
+                                <input
+                                    id="imageInput"
+                                    name="images[]"
+                                    type="file"
+                                    accept=".jpg,.png,.jpeg,.webp"
+                                    multiple
+                                    style="display:none">
+                            </div>
+
+
 
                         <div class="card-footer text-end">
-                            <button type="submit" class="btn btn-primary">ذخیره تغییرات</button>
+                            <button type="submit" class="btn btn-primary">
+                                ذخیره تغییرات
+                            </button>
                         </div>
-                    </div>
-
+                        </div>
+                        </div>
                 </form>
 
             </div>
         </div>
-
     </div>
+
+    @push('js')
+        <script>
+            $(document).on('click', '.delete-image', function () {
+
+                let button = $(this);
+                let url = button.data('url');
+
+                if (!confirm('آیا از حذف این تصویر مطمئن هستید؟')) {
+                    return;
+                }
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        _method: 'DELETE'
+                    },
+
+                    success: function () {
+                        button.closest('.position-relative').remove();
+                    },
+
+                    error: function (xhr) {
+                        console.log(xhr.responseText);
+                        alert('خطا در حذف تصویر');
+                    }
+                });
+
+            });
+        </script>
+    @endpush
+
 @endsection
+
+
+
