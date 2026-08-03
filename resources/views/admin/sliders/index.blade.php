@@ -51,7 +51,9 @@
                         <img
                             src="{{ getFileUrl($slider->image_id) }}"
                             width="150"
-                            height="80">
+                            height="80"
+                            alt="{{ $slider->title }}">
+                        >
                     </td>
 
 
