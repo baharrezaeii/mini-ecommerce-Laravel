@@ -15,6 +15,7 @@ class SliderController extends Controller
     {
         $sliders = Slider::query()
             ->with('image')
+            ->orderBy('sort')
             ->get();
         return view('admin.sliders.index', compact('sliders'));
     }
@@ -29,7 +30,7 @@ class SliderController extends Controller
         $request->validate([
             'title' => ['required','string','max:255'],
             'image' => ['required','image','mimes:jpg,jpeg,png,webp,gif','max:4096'],
-            'status' => ['required'],
+            'sort'   => ['required', 'integer', 'min:1'],
 
         ]);
 
@@ -63,10 +64,10 @@ class SliderController extends Controller
             Slider::create([
                 'title' => $request->title,
                 'image_id' => $file->id,
-                'status' => $request->status,
+                'status' => 1,
+                'sort'     => $request->sort,
 
             ]);
-
 
             DB::commit();
 
@@ -80,6 +81,7 @@ class SliderController extends Controller
             Log::error($exception);
 
             DB::rollBack();
+
 
             return back();
         }

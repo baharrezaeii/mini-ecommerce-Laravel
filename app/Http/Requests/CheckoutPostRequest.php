@@ -23,7 +23,7 @@ class CheckoutPostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_province' => ['required', 'persian_alpha', 'max:30'],
+            'user_province' => ['required', 'string','persian_alpha', 'max:30'],
             'user_city' => ['required', 'persian_alpha', 'max:30'],
             'user_address' => ['required', 'persian_alpha'],
             'user_postal_code' => ['required', 'digits:10','ir_postal_code'],

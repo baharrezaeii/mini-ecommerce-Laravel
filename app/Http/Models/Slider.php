@@ -10,7 +10,7 @@ class Slider extends Model
         'title',
         'image_id',
         'status',
-
+        'sort',
     ];
 
 

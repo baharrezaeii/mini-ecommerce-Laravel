@@ -230,6 +230,12 @@ return [
         'link' => 'لینک',
         'mobile_number' => 'شماره تماس',
         'work_number' => 'شماره تماس ثابت',
+        'user_province' =>'استان' ,
+        'user_city' =>'شهر' ,
+        'user_address' =>'ادرس' ,
+        'user_postal_code' => 'کد پستی',
+        'user_mobile' => 'موبایل',
+
     ],
 
 ];

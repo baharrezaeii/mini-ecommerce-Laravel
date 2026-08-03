@@ -5,7 +5,7 @@
         <div>
             <nav>
                 <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="{{ route('admin.sliders.index') }}">اسلایدرها</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('admin.sliders.create') }}">اسلایدرها</a></li>
                     <li class="breadcrumb-item active" aria-current="page">نمایش اسلایدرها</li>
                 </ol>
             </nav>
@@ -60,79 +60,75 @@
 
                                 </div>
 
-
-                                {{-- Status --}}
+                                {{-- Sort --}}
                                 <div class="col-xl-6">
 
                                     <label class="form-label">
-                                        وضعیت
+                                        ترتیب نمایش
                                     </label>
 
+                                    <input type="number"
+                                           class="form-control"
+                                           name="sort"
+                                           min="1"
+                                           value="{{ old('sort', 1) }}"
+                                           placeholder="ترتیب نمایش را وارد کنید">
 
-                                    <select class="form-control"
-                                            name="status">
-
-
-                                        <option value="1"
-                                            @selected(old('status',1)==1)>
-                                            فعال
-                                        </option>
-
-
-                                        <option value="0"
-                                            @selected(old('status')==0)>
-                                            غیرفعال
-                                        </option>
-
-
-                                    </select>
-
-
-                                    @error('status')
+                                    @error('sort')
                                     <span class="text-danger">
-                                    {{ $message }}
-                                </span>
+                                        {{ $message }}
+                                    </span>
                                     @enderror
 
-
                                 </div>
 
+                                <div class="col-xl-6">
 
-                                <div
-                                    class="image-upload-wrapper d-flex flex-wrap gap-2 px-0 pt-0 mt-3"
-                                    id="imagePreviewContainer"
-                                    style=" border-radius: 8px; padding: 10px;"
-                                >
-                                    <label
-                                        id="uploadPlaceholder"
-                                        class="upload-placeholder"
-                                        for="imageInput"
-                                        style="cursor: pointer; width:150px; height:150px; display: flex; justify-content: center; align-items: center; border: 2px dashed #ccc; border-radius: 8px; padding: 20px; text-align: center;"
-                                    >
-                                        <div>📷<br><strong>آپلود یا کشیدن</strong></div>
-                                        <small style="color:#999;">JPG / PNG / JPEG / WEBP</small>
+                                    <label class="form-label">
+                                        تصویر اسلایدر
                                     </label>
-                                    <input
-                                        id="imageInput"
-                                       type="file"
-                                        name="image"
-                                        accept=".jpg,.png,.jpeg,.webp"
-                                      class="form-control"
-                                        style="display:none"
-                                    />
+                                    <div
+                                        class="image-upload-wrapper d-flex flex-wrap gap-2 px-0 pt-0 mt-3"
+                                        id="imagePreviewContainer"
+                                        style=" border-radius: 8px; padding: 10px;"
+                                    >
+                                        <label
+                                            id="uploadPlaceholder"
+                                            class="upload-placeholder"
+                                            for="imageInput"
+                                            style="cursor: pointer; width:150px; height:150px; display: flex; justify-content: center; align-items: center; border: 2px dashed #ccc; border-radius: 8px; padding: 20px; text-align: center;"
+                                        >
+                                            <div>📷<br><strong>آپلود یا کشیدن</strong></div>
+                                            <small style="color:#999;">JPG / PNG / JPEG / WEBP/JFIF</small>
+                                        </label>
+                                        <input
+                                            id="imageInput"
+                                            type="file"
+                                            name="image"
+                                            accept=".jpg,.png,.jpeg,.webp"
+                                            class="form-control"
+                                            style="display:none"
+                                        />
+                                    </div>
+                                    @error('image')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
-                                @error('image')
-                                <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="card-footer text-end">
-                                <button type="submit" class="btn btn-primary">افزودن اسلایدر</button>
-                            </div>
-
-
                             </div>
                         </div>
+                        <div class="card-footer text-end">
+                            <button type="submit" class="btn btn-primary">افزودن اسلایدر</button>
+                        </div>
 
-       </form>
-                    @endsection
+
+                    </div>
+
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+@endsection
 
