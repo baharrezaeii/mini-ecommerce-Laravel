@@ -15,20 +15,20 @@
         </li>
 
         <li class="menu-item">
-            <a href="/" class="menu-item_link">
+            <a href="{{route('categories.index')}}" class="menu-item_link">
                 دسته بندی ها
             </a>
         </li>
 
 
         <li class="menu-item">
-            <a href="/" class="menu-item_link">
+            <a href="{{route('faq')}}" class="menu-item_link">
                 سوالات متداول
             </a>
         </li>
 
         <li class="menu-item">
-            <a href="/" class="menu-item_link">
+            <a href="{{route('about-us')}}" class="menu-item_link">
                 درباره ما
             </a>
         </li>

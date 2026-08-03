@@ -126,7 +126,7 @@
                                 @enderror
                             </div>
                             <div class="card-footer text-end">
-                                <button type="submit" class="btn btn-primary">ایجاد محصول</button>
+                                <button type="submit" class="btn btn-primary">افزودن اسلایدر</button>
                             </div>
 
 

@@ -5,6 +5,8 @@ use App\Http\Controllers\Account\EditProfileController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +31,7 @@ Route::prefix('account')->name('account.')->middleware('auth')->group(function (
 
         });
 
+
 });
 
 Route::prefix('cart')->name('cart.')->middleware('auth')->controller(CartController::class)->group(function () {
@@ -49,6 +52,13 @@ Route::prefix('checkout')->name('checkout.')->middleware('auth')->controller(Che
     Route::post('/', 'post')->name('post');
 
 });
+
+
+
+Route::get('/about-us', [PageController::class,'about'])->name('about-us');
+Route::get('/faq', [PageController::class,'faq'])->name('faq');
+
+Route::get('/categories', [ProductCategoryController::class, 'index'])->name('categories.index');
 
 
 

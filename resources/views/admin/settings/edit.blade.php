@@ -58,6 +58,31 @@
                             value="{{ $settings['instagram'] ?? '' }}"
                             class="form-control">
                     </div>
+                    <div class="mb-3">
+                        <label>لینکدین</label>
+                        <input
+                            type="text"
+                            name="linkedin"
+                            value="{{ $settings['linkedin'] ?? '' }}"
+                            class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label>یوتیوب</label>
+                        <input
+                            type="text"
+                            name="youtube"
+                            value="{{ $settings['youtube'] ?? '' }}"
+                            class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label>واتساب</label>
+                        <input
+                            type="text"
+                            name="whatsapp"
+                            value="{{ $settings['whatsapp'] ?? '' }}"
+                            class="form-control">
+                    </div>
 
                     <button class="btn btn-primary">
                         ذخیره تغییرات
