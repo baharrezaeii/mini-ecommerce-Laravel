@@ -53,7 +53,7 @@
                             width="150"
                             height="80"
                             alt="{{ $slider->title }}">
-                        
+
                     </td>
 
 
